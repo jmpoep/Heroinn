@@ -257,7 +257,7 @@ impl FtpApp {
                                             self.local_disk_info = match get_local_folder_info(&fullpath){
                                                 Ok(p) => p,
                                                 Err(e) => {
-                                                    msgbox::error(&"heroinn FTP".to_string(), &format!("get folder info faild : {}" ,e));
+                                                    msgbox::error(&"heroinn FTP".to_string(), &format!("get folder info failed : {}" ,e));
                                                     ui.close_menu();
                                                     return;
                                                 },
@@ -288,7 +288,7 @@ impl FtpApp {
                                             let fullpath = match get_remote_join_path(&self.sender ,&parent_path, &".".to_string()){
                                                 Ok(p) => p,
                                                 Err(e) => {
-                                                    msgbox::error(&self.title.to_string(), &format!("join remote path faild : {}" ,e));
+                                                    msgbox::error(&self.title.to_string(), &format!("join remote path failed : {}" ,e));
                                                     ui.close_menu();
                                                     return;
                                                 },
@@ -298,7 +298,7 @@ impl FtpApp {
                                             self.remote_disk_info = match get_remote_folder_info(&self.sender , &fullpath){
                                                 Ok(p) => p,
                                                 Err(e) => {
-                                                    msgbox::error(&self.title.to_string(), &format!("get remote folder info faild : {}" ,e));
+                                                    msgbox::error(&self.title.to_string(), &format!("get remote folder info failed : {}" ,e));
                                                     ui.close_menu();
                                                     return;
                                                 },
@@ -392,7 +392,7 @@ impl FtpApp {
                                             Err(e) => {
                                                 msgbox::error(
                                                     &self.title.to_string(),
-                                                    &format!("get folder info faild : {}", e),
+                                                    &format!("get folder info failed : {}", e),
                                                 );
                                                 ui.close_menu();
                                                 return;
@@ -411,7 +411,7 @@ impl FtpApp {
                                         Err(e) => {
                                             msgbox::error(
                                                 &self.title.to_string(),
-                                                &format!("join remote path faild : {}", e),
+                                                &format!("join remote path failed : {}", e),
                                             );
                                             ui.close_menu();
                                             return;
@@ -425,7 +425,7 @@ impl FtpApp {
                                                 msgbox::error(
                                                     &self.title.to_string(),
                                                     &format!(
-                                                        "get remote folder info faild : {}",
+                                                        "get remote folder info failed : {}",
                                                         e
                                                     ),
                                                 );
@@ -455,7 +455,7 @@ impl FtpApp {
                                                 Err(e) => {
                                                     msgbox::error(
                                                         &self.title.to_string(),
-                                                        &format!("join remote path faild : {}", e),
+                                                        &format!("join remote path failed : {}", e),
                                                     );
                                                     ui.close_menu();
                                                     return;
@@ -480,7 +480,7 @@ impl FtpApp {
                                                     msgbox::error(
                                                         &self.title.to_string(),
                                                         &format!(
-                                                            "download remote file faild : {}",
+                                                            "download remote file failed : {}",
                                                             e
                                                         ),
                                                     );
@@ -510,7 +510,7 @@ impl FtpApp {
                                             Err(e) => {
                                                 msgbox::error(
                                                     &self.title.to_string(),
-                                                    &format!("join remote path faild : {}", e),
+                                                    &format!("join remote path failed : {}", e),
                                                 );
                                                 ui.close_menu();
                                                 return;
@@ -535,7 +535,7 @@ impl FtpApp {
                                                 msgbox::error(
                                                     &self.title.to_string(),
                                                     &format!(
-                                                        "download remote file faild : {}",
+                                                        "download remote file failed : {}",
                                                         e
                                                     ),
                                                 );
@@ -564,7 +564,7 @@ impl FtpApp {
                                             Err(e) => {
                                                 msgbox::error(
                                                     &self.title.to_string(),
-                                                    &format!("join remote path faild : {}", e),
+                                                    &format!("join remote path failed : {}", e),
                                                 );
                                                 ui.close_menu();
                                                 return;
@@ -577,7 +577,7 @@ impl FtpApp {
                                                 msgbox::error(
                                                     &self.title.to_string(),
                                                     &format!(
-                                                        "delete remote file info faild : {}",
+                                                        "delete remote file info failed : {}",
                                                         e
                                                     ),
                                                 );
@@ -603,7 +603,7 @@ impl FtpApp {
                                             Err(e) => {
                                                 msgbox::error(
                                                     &self.title.to_string(),
-                                                    &format!("delete local file faild : {}", e),
+                                                    &format!("delete local file failed : {}", e),
                                                 );
                                                 ui.close_menu();
                                                 return;
@@ -784,7 +784,7 @@ impl FtpApp {
             Err(e) => {
                 msgbox::error(
                     &"heroinn FTP".to_string(),
-                    &format!("get folder info faild : {}", e),
+                    &format!("get folder info failed : {}", e),
                 );
                 vec![]
             }
@@ -809,7 +809,7 @@ impl FtpApp {
             Err(e) => {
                 msgbox::error(
                     &"heroinn FTP".to_string(),
-                    &format!("get remote folder info faild : {}", e),
+                    &format!("get remote folder info failed : {}", e),
                 );
                 vec![]
             }

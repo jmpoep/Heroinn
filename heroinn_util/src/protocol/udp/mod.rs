@@ -104,7 +104,7 @@ impl Server for UDPServer {
                                     {
                                         Ok(p) => p,
                                         Err(e) => {
-                                            log::error!("tunnel connect faild : {}", e);
+                                            log::error!("tunnel connect failed : {}", e);
                                             break;
                                         }
                                     };
@@ -122,7 +122,7 @@ impl Server for UDPServer {
                                                     Ok(p) => p,
                                                     Err(e) => {
                                                         log::error!(
-                                                            "tunnel read faild : {}",
+                                                            "tunnel read failed : {}",
                                                             e
                                                         );
                                                         break;

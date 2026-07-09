@@ -85,7 +85,7 @@ impl ConnectionInfo {
             Err(_) => {
                 Err(std::io::Error::new(
                     std::io::ErrorKind::InvalidData,
-                    "serilize TunnelRequest packet faild",
+                    "serilize TunnelRequest packet failed",
                 ))
             }
         }

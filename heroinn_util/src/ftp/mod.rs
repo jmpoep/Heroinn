@@ -65,7 +65,7 @@ impl FTPGetHeader {
             Err(_) => {
                 Err(std::io::Error::new(
                     std::io::ErrorKind::InvalidData,
-                    "serilize FTPGetHeader packet faild",
+                    "serilize FTPGetHeader packet failed",
                 ))
             }
         }
@@ -91,7 +91,7 @@ impl FTPPutHeader {
             Err(_) => {
                 Err(std::io::Error::new(
                     std::io::ErrorKind::InvalidData,
-                    "serilize FTPPutHeader packet faild",
+                    "serilize FTPPutHeader packet failed",
                 ))
             }
         }
@@ -110,7 +110,7 @@ impl FTPPacket {
             Err(_) => {
                 Err(std::io::Error::new(
                     std::io::ErrorKind::InvalidData,
-                    "serilize FTPPacket packet faild",
+                    "serilize FTPPacket packet failed",
                 ))
             }
         }
@@ -128,7 +128,7 @@ impl FileInfo {
             Err(e) => {
                 Err(std::io::Error::new(
                     std::io::ErrorKind::InvalidData,
-                    format!("serilize disk info faild : {}", e),
+                    format!("serilize disk info failed : {}", e),
                 ))
             }
         }

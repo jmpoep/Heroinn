@@ -108,7 +108,7 @@ impl Session for FtpClient {
                     ) {
                         Ok(p) => p,
                         Err(e) => {
-                            log::error!("create tunnel faild : {}", e);
+                            log::error!("create tunnel failed : {}", e);
                             return;
                         }
                     };
@@ -116,7 +116,7 @@ impl Session for FtpClient {
                     let header = match client.recv() {
                         Ok(p) => p,
                         Err(e) => {
-                            log::error!("recv get header tunnel faild : {}", e);
+                            log::error!("recv get header tunnel failed : {}", e);
                             return;
                         }
                     };
@@ -126,7 +126,7 @@ impl Session for FtpClient {
                     let mut f = match std::fs::File::open(&header.path) {
                         Ok(p) => p,
                         Err(e) => {
-                            log::error!("open file faild : {}", e);
+                            log::error!("open file failed : {}", e);
                             return;
                         }
                     };
@@ -135,7 +135,7 @@ impl Session for FtpClient {
                         match f.seek(SeekFrom::Start(header.start_pos)) {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("seek file faild : {}", e);
+                                log::error!("seek file failed : {}", e);
                                 return;
                             }
                         };
@@ -152,7 +152,7 @@ impl Session for FtpClient {
                         let size = match f.read(&mut buf) {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("read file faild : {}", e);
+                                log::error!("read file failed : {}", e);
                                 break;
                             }
                         };
@@ -165,7 +165,7 @@ impl Session for FtpClient {
                         match client.send(&mut buf[..size]) {
                             Ok(_) => {}
                             Err(e) => {
-                                log::error!("get worker send to server faild : {}", e);
+                                log::error!("get worker send to server failed : {}", e);
                                 break;
                             }
                         };
@@ -188,7 +188,7 @@ impl Session for FtpClient {
                     ) {
                         Ok(p) => p,
                         Err(e) => {
-                            log::error!("create tunnel faild : {}", e);
+                            log::error!("create tunnel failed : {}", e);
                             return;
                         }
                     };
@@ -197,7 +197,7 @@ impl Session for FtpClient {
                     let header = match client.recv() {
                         Ok(p) => p,
                         Err(e) => {
-                            log::error!("recv get header faild : {}", e);
+                            log::error!("recv get header failed : {}", e);
                             return;
                         }
                     };
@@ -205,7 +205,7 @@ impl Session for FtpClient {
                     let header = match FTPPutHeader::parse(&header) {
                         Ok(p) => p,
                         Err(e) => {
-                            log::error!("parse get header faild : {}", e);
+                            log::error!("parse get header failed : {}", e);
                             return;
                         }
                     };
@@ -214,7 +214,7 @@ impl Session for FtpClient {
                         match std::fs::File::create(&header.path) {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("create remote file faild [{}] : {}", header.path, e);
+                                log::error!("create remote file failed [{}] : {}", header.path, e);
                                 return;
                             }
                         }
@@ -222,7 +222,7 @@ impl Session for FtpClient {
                         let mut f = match std::fs::File::options().write(true).open(&header.path) {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("open remote file faild [{}] : {}", header.path, e);
+                                log::error!("open remote file failed [{}] : {}", header.path, e);
                                 return;
                             }
                         };
@@ -230,7 +230,7 @@ impl Session for FtpClient {
                         match f.seek(SeekFrom::Start(header.start_pos)) {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("seek remote file faild [{}] : {}", header.path, e);
+                                log::error!("seek remote file failed [{}] : {}", header.path, e);
                                 return;
                             }
                         };
@@ -247,7 +247,7 @@ impl Session for FtpClient {
                         let data = match client.recv() {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("recv data faild from ftp slave : {}", e);
+                                log::error!("recv data failed from ftp slave : {}", e);
                                 break;
                             }
                         };
@@ -259,7 +259,7 @@ impl Session for FtpClient {
                         match f.write_all(&data) {
                             Ok(_) => {}
                             Err(e) => {
-                                log::error!("write download file faild : {}", e);
+                                log::error!("write download file failed : {}", e);
                                 break;
                             }
                         };
@@ -267,7 +267,7 @@ impl Session for FtpClient {
                         let pos = match f.stream_position() {
                             Ok(p) => p,
                             Err(e) => {
-                                log::error!("get localfile size faild : {}", e);
+                                log::error!("get localfile size failed : {}", e);
                                 break;
                             }
                         };

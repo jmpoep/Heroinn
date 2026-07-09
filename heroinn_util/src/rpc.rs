@@ -31,7 +31,7 @@ impl RpcMessage {
             Err(_) => {
                 Err(std::io::Error::new(
                     std::io::ErrorKind::InvalidData,
-                    "serilize RpcMessage faild",
+                    "serilize RpcMessage failed",
                 ))
             }
         }
