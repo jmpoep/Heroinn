@@ -117,7 +117,7 @@ impl Server for WSServer {
                                                     Ok(p) => p,
                                                     Err(e) => {
                                                         log::error!(
-                                                            "tunnel connect faild : {}",
+                                                            "tunnel connect failed : {}",
                                                             e
                                                         );
                                                         break;
@@ -136,7 +136,7 @@ impl Server for WSServer {
                                                             Ok(p) => p,
                                                             Err(e) => {
                                                                 log::error!(
-                                                                    "tunnel read faild : {}",
+                                                                    "tunnel read failed : {}",
                                                                     e
                                                                 );
                                                                 break;

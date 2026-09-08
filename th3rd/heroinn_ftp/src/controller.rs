@@ -17,7 +17,7 @@ fn send_ftp_packet(sender: &Sender<FTPPacket>, packet: FTPPacket) -> Result<()> 
         Ok(_) => Ok(()),
         Err(_) => Err(std::io::Error::new(
             std::io::ErrorKind::Interrupted,
-            "sender ftp packet faild",
+            "sender ftp packet failed",
         )),
     }
 }
@@ -186,7 +186,7 @@ pub fn download_file(
             match f.seek(SeekFrom::Start(header.start_pos)) {
                 Ok(_) => {}
                 Err(e) => {
-                    log::error!("seek local file faild : {}", e);
+                    log::error!("seek local file failed : {}", e);
                     return Err(e);
                 }
             };
@@ -232,7 +232,7 @@ pub fn download_file(
             }) {
                 Ok(_) => {}
                 Err(e) => {
-                    log::error!("send open tunnel msg faild : {}", e);
+                    log::error!("send open tunnel msg failed : {}", e);
                     return;
                 }
             }
@@ -240,7 +240,7 @@ pub fn download_file(
             let (mut s, _) = match TcpConnection::tunnel_server(server, 10) {
                 Ok(p) => p,
                 Err(e) => {
-                    log::error!("create tunnel server faild : {}", e);
+                    log::error!("create tunnel server failed : {}", e);
                     return;
                 }
             };
@@ -248,7 +248,7 @@ pub fn download_file(
             match s.send(&mut header.serialize().unwrap()) {
                 Ok(_) => {}
                 Err(e) => {
-                    log::error!("send get header faild : {}", e);
+                    log::error!("send get header failed : {}", e);
                     return;
                 }
             };
@@ -277,7 +277,7 @@ pub fn download_file(
                 let data = match s.recv() {
                     Ok(p) => p,
                     Err(e) => {
-                        log::error!("recv data faild from ftp slave : {}", e);
+                        log::error!("recv data failed from ftp slave : {}", e);
                         break;
                     }
                 };
@@ -289,7 +289,7 @@ pub fn download_file(
                 match f.write_all(&data) {
                     Ok(_) => {}
                     Err(e) => {
-                        log::error!("write download file faild : {}", e);
+                        log::error!("write download file failed : {}", e);
                         break;
                     }
                 };
@@ -297,7 +297,7 @@ pub fn download_file(
                 let pos = match f.stream_position() {
                     Ok(p) => p,
                     Err(e) => {
-                        log::error!("get localfile size faild : {}", e);
+                        log::error!("get localfile size failed : {}", e);
                         break;
                     }
                 };
@@ -395,7 +395,7 @@ pub fn upload_file(
             }) {
                 Ok(_) => {}
                 Err(e) => {
-                    log::error!("send open tunnel msg faild : {}", e);
+                    log::error!("send open tunnel msg failed : {}", e);
                     return;
                 }
             }
@@ -403,7 +403,7 @@ pub fn upload_file(
             let (mut s, _) = match TcpConnection::tunnel_server(server, 10) {
                 Ok(p) => p,
                 Err(e) => {
-                    log::error!("create tunnel server faild : {}", e);
+                    log::error!("create tunnel server failed : {}", e);
                     return;
                 }
             };
@@ -411,7 +411,7 @@ pub fn upload_file(
             match s.send(&mut header.serialize().unwrap()) {
                 Ok(p) => p,
                 Err(e) => {
-                    log::error!("send get header faild : {}", e);
+                    log::error!("send get header failed : {}", e);
                     return;
                 }
             };
@@ -422,7 +422,7 @@ pub fn upload_file(
                 match f.seek(SeekFrom::Start(header.start_pos)) {
                     Ok(_) => {}
                     Err(e) => {
-                        log::error!("seek start pos faild : {}", e);
+                        log::error!("seek start pos failed : {}", e);
                         return;
                     }
                 };
@@ -453,7 +453,7 @@ pub fn upload_file(
                 let size = match f.read(&mut buf) {
                     Ok(p) => p,
                     Err(e) => {
-                        log::error!("read file faild : {}", e);
+                        log::error!("read file failed : {}", e);
                         break;
                     }
                 };
@@ -466,7 +466,7 @@ pub fn upload_file(
                 match s.send(&mut buf[..size]) {
                     Ok(_) => {}
                     Err(e) => {
-                        log::error!("get worker send to server faild : {}", e);
+                        log::error!("get worker send to server failed : {}", e);
                         break;
                     }
                 };
@@ -484,7 +484,7 @@ pub fn upload_file(
                 let pos = match f.stream_position() {
                     Ok(p) => p,
                     Err(e) => {
-                        log::error!("get localfile size faild : {}", e);
+                        log::error!("get localfile size failed : {}", e);
                         break;
                     }
                 };

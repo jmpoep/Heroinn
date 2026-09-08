@@ -105,7 +105,7 @@ impl Server for TcpServer {
                                             {
                                                 Ok(p) => p,
                                                 Err(e) => {
-                                                    log::error!("tunnel connect faild : {}", e);
+                                                    log::error!("tunnel connect failed : {}", e);
                                                     break;
                                                 }
                                             };
@@ -125,7 +125,7 @@ impl Server for TcpServer {
                                                         &mut s_2,
                                                     ) {
                                                         log::error!(
-                                                            "tunnel1 io copy faild : {}",
+                                                            "tunnel1 io copy failed : {}",
                                                             e
                                                         );
                                                     };
@@ -148,7 +148,7 @@ impl Server for TcpServer {
                                                         &mut tunnel_client_2,
                                                     ) {
                                                         log::error!(
-                                                            "tunnel2 io copy faild : {}",
+                                                            "tunnel2 io copy failed : {}",
                                                             e
                                                         );
                                                     };

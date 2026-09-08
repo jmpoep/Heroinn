@@ -94,7 +94,7 @@ fn main() {
         ) {
             Ok(p) => p,
             Err(e) => {
-                log::info!("connect faild : {}", e);
+                log::info!("connect failed : {}", e);
                 std::thread::sleep(Duration::from_secs(5));
                 continue;
             }
@@ -141,7 +141,7 @@ fn main() {
             match Message::build(HeroinnClientMsgID::HostInfo.to_u8(), &clientid, hostinfo) {
                 Ok(p) => p,
                 Err(e) => {
-                    log::error!("make HostInfo packet faild : {}", e);
+                    log::error!("make HostInfo packet failed : {}", e);
                     client.close();
                     continue;
                 }
@@ -150,7 +150,7 @@ fn main() {
         match client.send(&mut buf) {
             Ok(p) => p,
             Err(e) => {
-                log::error!("send HostInfo packet faild : {}", e);
+                log::error!("send HostInfo packet failed : {}", e);
                 client.close();
                 continue;
             }
@@ -206,7 +206,7 @@ fn main() {
                 ) {
                     Ok(p) => p,
                     Err(e) => {
-                        log::error!("make Heartbeat packet faild : {}", e);
+                        log::error!("make Heartbeat packet failed : {}", e);
                         break;
                     }
                 };
@@ -214,7 +214,7 @@ fn main() {
                 match sender_1.send(buf) {
                     Ok(p) => p,
                     Err(e) => {
-                        log::error!("send Heartbeat packet to channel faild : {}", e);
+                        log::error!("send Heartbeat packet to channel failed : {}", e);
                         break;
                     }
                 };
@@ -265,7 +265,7 @@ fn main() {
                             ) {
                                 Ok(p) => p,
                                 Err(e) => {
-                                    log::error!("create shell session faild : {}", e);
+                                    log::error!("create shell session failed : {}", e);
                                     continue;
                                 }
                             };
@@ -318,7 +318,7 @@ fn main() {
                     }
                 }
                 Err(e) => {
-                    log::error!("connection recv faild : {}", e);
+                    log::error!("connection recv failed : {}", e);
                     client.close();
                     break;
                 }
